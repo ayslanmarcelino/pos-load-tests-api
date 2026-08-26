@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+#
+# "one" e "two" são usados por test/models/user_test.rb.
+# O bloco ERB gera usuários extras suficientes para validar que o limit
+# máximo (1000) é respeitado mesmo quando o banco de teste tem mais dados.
+
+one:
+  name: User One
+  email: one@example.com
+  company: one
+
+two:
+  name: User Two
+  email: two@example.com
+  company: two
+
+<% (1..1100).each do |i| %>
+extra_<%= i %>:
+  name: Extra User <%= i %>
+  email: extra_<%= i %>@example.com
+  company: <%= i.even? ? "one" : "two" %>
+<% end %>
